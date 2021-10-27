@@ -31,16 +31,6 @@
       name: tomcat9
       state: started
     when:  ansible_facts['os_family'] == "Debian"
-  - name: configuration of tomcat CentOS
-    copy:
-      src: /ec2-user/tomcat.config
-      dest: /etc/tomcat/tomcat-users.xml
-    when:  ansible_facts['os_family'] == "RedHat"
-  - name: starting up tomcat CentOS 
-    service:
-      name: tomcat
-      state: restarted
-    when:  ansible_facts['os_family'] == "RedHat"
   - name: starting tomcat Ubuntu
     service:
       name: tomcat9
